@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cookie Inspector</title>
+</head>
+<body>
+  <h2>Cookie Inspector</h2>
+
+  <script>
+    (() => {
+      console.log("=== Cookie Inspector ===");
+      console.log("Website:", location.origin);
+
+      const cookies = document.cookie
+        ? document.cookie.split("; ").map(cookie => {
+            const index = cookie.indexOf("=");
+            return {
+              name: cookie.slice(0, index),
+              value: "[REDACTED]"
+            };
+          })
+        : [];
+
+      console.table(cookies);
+    })();
+  </script>
+</body>
+</html>
